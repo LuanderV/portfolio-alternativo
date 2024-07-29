@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
-import { HeroSection } from "@/components/pages/home/hero-section";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,9 +30,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Header />
-        <HeroSection />
         {children}
-      
       </body>
     </html>
   );
