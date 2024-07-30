@@ -1,7 +1,7 @@
 'use client'
 
-import { Link } from "@/components/link"
-import { SectionTitle } from "@/components/section-title"
+import { Link } from "@/app/components/link"
+import { SectionTitle } from "@/app/components/section-title"
 import { motion } from 'framer-motion'
 import { HiArrowNarrowLeft } from "react-icons/hi"
 

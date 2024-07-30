@@ -1,8 +1,8 @@
 'use client'
 
 import { TbBrandNextjs } from 'react-icons/tb'
-import { SectionTitle } from '../section-title'
 import { KnownTech } from './known-tech'
+import { SectionTitle } from '@/app/components/section-title'
 
 export const KnownTechs = () => {
   return (

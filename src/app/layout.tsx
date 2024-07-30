@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
-import { ContactForm } from "@/components/contact-form";
+import { Header } from "@/app/components/header";
+import { Footer } from "@/app/components/footer";
+import { ContactForm } from "@/app/components/contact-form";
+import { BackToTop } from "./components/back-to-top";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Header />
+        <BackToTop />
         {children}
         <ContactForm />
         <Footer />

@@ -1,7 +1,7 @@
-import { HeroSection } from "@/components/pages/home/hero-section";
-import { KnownTechs } from "@/components/known-techs";
-import { HighlightedProjects } from "@/components/pages/home/highlighted-projects";
-import { WorkExperience } from "@/components/pages/home/work-experience";
+import { HeroSection } from "@/app/components/pages/home/hero-section";
+import { HighlightedProjects } from "@/app/components/pages/home/highlighted-projects";
+import { WorkExperience } from "@/app/components/pages/home/work-experience";
+import { KnownTechs } from "./components/pages/home/known-techs";
 
 export default function Home() {
   return (

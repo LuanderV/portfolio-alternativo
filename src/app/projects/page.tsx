@@ -1,5 +1,5 @@
-import { PageIntroduction } from "@/components/pages/home/projects/page-introduction";
-import { ProjectsList } from "@/components/pages/home/projects/projects-list";
+import { PageIntroduction } from "@/app/components/pages/projects/page-introduction";
+import { ProjectsList } from "@/app/components/pages/projects/projects-list";
 
 export default function Projects() {
     return (

@@ -1,7 +1,7 @@
 'use client'
 
-import { Link } from "@/components/link";
-import { TechBadge } from "@/components/tech-badge";
+import { Link } from "@/app/components/link";
+import { TechBadge } from "@/app/components/tech-badge";
 import Image from "next/image";
 import { fadeUpAnimation } from '@/app/lib/animations'
 import { motion } from 'framer-motion'
