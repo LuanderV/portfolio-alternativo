@@ -4,8 +4,6 @@ import { TbBrandNextjs } from 'react-icons/tb'
 import { SectionTitle } from '../section-title'
 import { KnownTech } from './known-tech'
 
-
-
 export const KnownTechs = () => {
   return (
     <section className="container py-16">

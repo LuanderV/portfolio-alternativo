@@ -1,12 +1,28 @@
+'use client'
+
+import { Link } from "@/components/link";
 import { TechBadge } from "@/components/tech-badge";
 import Image from "next/image";
-import Link from "next/link";
+import { fadeUpAnimation } from '@/app/lib/animations'
+import { motion } from 'framer-motion'
 import { HiArrowNarrowRight } from "react-icons/hi";
 
 export const ProjectCard = () => {
   return (
-    <div className="flex gap-6 lg:gap-12 flex-col lg:flex-row">
-      <div className="w-full h-[200px] sm:h-[300px] lg:w-[420px] lg:min-h-full">
+    <motion.div
+      className="flex gap-6 lg:gap-12 flex-col lg:flex-row"
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 100 }}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.div
+        className="w-full h-[200px] sm:h-[300px] lg:w-[420px] lg:min-h-full"
+        initial={{ opacity: 0, y: 100, scale: 0.5 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 100, scale: 0.5 }}
+        transition={{ duration: 0.3, delay: 0.3 }}
+      >
         <Image
          src="/images/profile-pic.png"
          width={420}
@@ -14,19 +30,29 @@ export const ProjectCard = () => {
          alt="Thumb"
          className="w-full h-full object-cover rounded-lg"
         />
-      </div>
+      </motion.div>
 
       <div className="flex-1 lg:py-[18px]">
-        <h3 className="flex items-center gap-3 font-medium text-lg text-gray-50">
+        <motion.h3
+          className="flex items-center gap-3 font-medium text-lg text-gray-50"
+          {...fadeUpAnimation}
+          transition={{ duration: 0.7 }}
+        >
           <Image
             width={20}
             height={20}
             alt=""
             src="/images/icons/project-title-icon.svg"
           />
-        </h3>
+        </motion.h3>
 
-        <p className="text-gray-400 my-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, in? Distinctio, at? Laborum, numquam. Ex libero dolorem quas assumenda nemo.</p>
+        <motion.p
+          className="text-gray-400 my-6"
+          {...fadeUpAnimation}
+          transition={{ duration: 0.2, delay: 0.3 }}
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, in? Distinctio, at? Laborum, numquam. Ex libero dolorem quas assumenda nemo.
+        </motion.p>
 
         <div className="flex gap-x-2 gap-y-3 flex-wrap lg:max-w-[350px] mb-8">
           <TechBadge name="Next.js" />
@@ -41,6 +67,6 @@ export const ProjectCard = () => {
           <HiArrowNarrowRight />
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 }

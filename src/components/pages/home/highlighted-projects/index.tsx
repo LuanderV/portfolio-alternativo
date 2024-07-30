@@ -1,8 +1,8 @@
 import { HorizontalDivider } from '@/components/divider/horizontal'
 import { SectionTitle } from '../../../section-title'
 import { ProjectCard } from './project-card'
-import Link from 'next/link'
 import { HiArrowNarrowRight } from 'react-icons/hi'
+import { Link } from '@/components/link'
 
 export const HighlightedProjects = () => {
   return (
