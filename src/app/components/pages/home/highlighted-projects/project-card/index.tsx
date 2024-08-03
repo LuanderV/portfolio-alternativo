@@ -1,13 +1,18 @@
 'use client'
 
-import { Link } from "@/app/components/link";
-import { TechBadge } from "@/app/components/tech-badge";
-import Image from "next/image";
-import { fadeUpAnimation } from '@/app/lib/animations'
+import { Link } from '@/app/components/link'
+import { TechBadge } from '@/app/components/tech-badge'
+import Image from 'next/image'
+import { HiArrowNarrowRight } from 'react-icons/hi'
 import { motion } from 'framer-motion'
-import { HiArrowNarrowRight } from "react-icons/hi";
+import { Project } from '@/app/types/projects'
+import { fadeUpAnimation } from '@/app/lib/animations'
 
-export const ProjectCard = () => {
+type ProjectCardProps = {
+  project: Project
+}
+
+export const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <motion.div
       className="flex gap-6 lg:gap-12 flex-col lg:flex-row"
@@ -24,11 +29,11 @@ export const ProjectCard = () => {
         transition={{ duration: 0.3, delay: 0.3 }}
       >
         <Image
-         src="/images/profile-pic.png"
-         width={420}
-         height={304}
-         alt="Thumb"
-         className="w-full h-full object-cover rounded-lg"
+          src={project.thumbnail.url}
+          width={420}
+          height={304}
+          alt={`Thumbnail do projeto ${project.title}`}
+          className="w-full h-full object-cover rounded-lg"
         />
       </motion.div>
 
@@ -44,6 +49,7 @@ export const ProjectCard = () => {
             alt=""
             src="/images/icons/project-title-icon.svg"
           />
+          {project.title}
         </motion.h3>
 
         <motion.p
@@ -51,22 +57,27 @@ export const ProjectCard = () => {
           {...fadeUpAnimation}
           transition={{ duration: 0.2, delay: 0.3 }}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, in? Distinctio, at? Laborum, numquam. Ex libero dolorem quas assumenda nemo.
+          {project.shortDescription}
         </motion.p>
 
         <div className="flex gap-x-2 gap-y-3 flex-wrap lg:max-w-[350px] mb-8">
-          <TechBadge name="Next.js" />
-          <TechBadge name="Next.js" />
-          <TechBadge name="Next.js" />
-          <TechBadge name="Next.js" />
-          <TechBadge name="Next.js" />
+          {project.technologies.map((tech, i) => (
+            <TechBadge
+              name={tech.name}
+              key={`${project.title}-tech-${tech.name}`}
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{ duration: 0.2, delay: 0.5 + i * 0.1 }}
+            />
+          ))}
         </div>
 
-        <Link href="/projects/teste">
+        <Link href={`/projects/${project.slug}`}>
           Ver projeto
           <HiArrowNarrowRight />
         </Link>
       </div>
     </motion.div>
-  );
+  )
 }

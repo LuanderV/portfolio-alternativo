@@ -1,11 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-        appDir: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'sa-east-1.graphassets.com',
+        pathname: '/**',
       },
-    images: {
-        domains: ['media.graphassets.com'],
-      },
+    ],
+  },
 };
 
 export default nextConfig;

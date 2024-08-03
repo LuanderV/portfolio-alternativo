@@ -1,13 +1,15 @@
 'use client'
 
-import { HiArrowNarrowRight } from "react-icons/hi"
-import { Button } from "../button"
-import { SectionTitle } from "../section-title"
-import { useForm } from 'react-hook-form'
-import { motion } from 'framer-motion'
 import { z } from 'zod'
+import { SectionTitle } from '../section-title'
+import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { fadeUpAnimation } from "@/app/lib/animations"
+import { Button } from '../button'
+import { HiArrowNarrowRight } from 'react-icons/hi'
+import { motion } from 'framer-motion'
+import axios from 'axios'
+import { toast } from 'react-hot-toast'
+import { fadeUpAnimation } from '@/app/lib/animations'
 
 const contactFormSchema = z.object({
   name: z.string().min(3).max(100),
@@ -18,23 +20,36 @@ const contactFormSchema = z.object({
 type ContactFormData = z.infer<typeof contactFormSchema>
 
 export const ContactForm = () => {
-  const { handleSubmit, register } = useForm <ContactFormData>({
-    resolver: zodResolver(contactFormSchema)
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { isSubmitting },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
   })
 
-  const onSubmit = (data: ContactFormData) => {
-    console.log(data)
+  const onSubmit = async (data: ContactFormData) => {
+    try {
+      await axios.post('/api/contact', data)
+      toast.success('Mensagem enviada com sucesso!')
+      reset()
+    } catch (error) {
+      toast.error('Ocorreu um erro ao enviar a mensagem. Tente novamente.')
+    }
   }
 
   return (
-    <section id="contact" className="py-16 px-6 md:py-32 flex items-center justify-center bg-gray-950">
+    <section
+      className="py-16 px-6 md:py-32 flex items-center justify-center bg-gray-950"
+      id="contact"
+    >
       <div className="w-full max-w-[420px] mx-auto">
-      <SectionTitle
+        <SectionTitle
           subtitle="contato"
           title="Vamos trabalhar juntos? Entre em contato"
           className="items-center text-center"
         />
-
         <motion.form
           className="mt-12 w-full flex flex-col gap-4"
           onSubmit={handleSubmit(onSubmit)}
@@ -59,7 +74,7 @@ export const ContactForm = () => {
           />
 
           <div className="relative w-max mx-auto mt-6">
-            <Button className="z-[2] relative">
+            <Button className="z-[2] relative" disabled={isSubmitting}>
               Enviar mensagem
               <HiArrowNarrowRight size={18} />
             </Button>

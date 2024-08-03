@@ -25,3 +25,38 @@
   background-color: #10b981;
   border-radius: 14px;
 }
+
+.logos:before, .logos:after {
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  content: "";
+  z-index: 1;
+}
+
+.logos:before {
+  left: 0;
+  background: linear-gradient(to left, #11182700,  #111827);
+}
+
+.logos:after {
+  right: 0;
+  background: linear-gradient(to right, #11182700,  #111827);
+}
+
+.logos:hover .logos-slide {
+  animation-play-state: paused;
+}
+
+.logos-slide {
+  animation: 10s slide infinite linear;
+}
+
+@keyframes slide {
+  from{
+      transform: translateX(0);
+  } to {
+      transform: translateX(-100%);
+  }
+}

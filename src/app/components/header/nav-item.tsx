@@ -1,15 +1,16 @@
-import { cn } from '@/app/lib/utils';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { cn } from '@/app/lib/utils'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 type NavItemProps = {
-  href: string;
-  label: string;
-};
+  href: string
+  label: string
+}
 
 export const NavItem = ({ label, href }: NavItemProps) => {
-  const pathname = usePathname();
-  const isActive = pathname === href;
+  const pathname = usePathname()
+
+  const isActive = pathname === href
 
   return (
     <Link
@@ -22,5 +23,5 @@ export const NavItem = ({ label, href }: NavItemProps) => {
       <span className="text-emerald-400">#</span>
       {label}
     </Link>
-  );
-};
+  )
+}
