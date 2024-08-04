@@ -37,4 +37,13 @@ export type ProjectsPageStaticData = {
 export type HomePageData = {
   page: HomePageInfo
   workExperiences: WorkExperience[]
+  skills: Skill[]
 }
+
+export type Skill = {
+  title: string
+  image: {
+    url: string
+  }
+}
+

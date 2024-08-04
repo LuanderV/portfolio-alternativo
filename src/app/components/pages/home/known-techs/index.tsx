@@ -6,8 +6,17 @@ import { motion } from 'framer-motion'
 import { KnownTech as IKnownTech } from '@/app/types/projects'
 import Skills from './skills'
 
+export type Skill = {
+  title: string
+  image: {
+    url: string
+  }
+}
+
+
 type KnownTechsProps = {
   techs: IKnownTech[]
+  skills: Skill[]
 }
 
 export const KnownTechs = ({ techs, skills }: KnownTechsProps) => {
