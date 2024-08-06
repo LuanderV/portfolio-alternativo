@@ -1,14 +1,14 @@
 import Image from "next/image";
 
-interface Skill {
+type Skills = {
   title: string;
   image: {
     url: string;
   };
 }
 
-interface SkillsProps {
-  skills: Skill[];
+type SkillsProps = {
+  skills: Skills[];
 }
 
 const Skills: React.FC<SkillsProps> = ({ skills }) => {

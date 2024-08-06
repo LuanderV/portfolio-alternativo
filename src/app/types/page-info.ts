@@ -41,9 +41,9 @@ export type HomePageData = {
 }
 
 export type Skill = {
-  title: string
+  title: string;
   image: {
-    url: string
+    url: string;
   }
 }
 

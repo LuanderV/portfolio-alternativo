@@ -4,22 +4,13 @@ import { SectionTitle } from '@/app/components/section-title'
 import { KnownTech } from './known-tech'
 import { motion } from 'framer-motion'
 import { KnownTech as IKnownTech } from '@/app/types/projects'
-import Skills from './skills'
-
-export type Skill = {
-  title: string
-  image: {
-    url: string
-  }
-}
-
 
 type KnownTechsProps = {
   techs: IKnownTech[]
-  skills: Skill[]
 }
 
-export const KnownTechs = ({ techs, skills }: KnownTechsProps) => {
+export const KnownTechs = ({ techs }: KnownTechsProps) => {
+
   return (
     <section className="container py-16">
       <SectionTitle subtitle="competências" title="Conhecimentos" />
@@ -36,7 +27,6 @@ export const KnownTechs = ({ techs, skills }: KnownTechsProps) => {
           </motion.div>
         ))}
       </div>
-      <Skills skills={skills} />
     </section>
   )
 }

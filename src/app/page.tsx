@@ -1,6 +1,7 @@
 import { HeroSection } from './components/pages/home/hero-section'
 import { HighlightedProjects } from './components/pages/home/highlighted-projects'
 import { KnownTechs } from './components/pages/home/known-techs'
+import Skills from './components/skills'
 import { WorkExperience } from './components/pages/home/work-experience'
 import { HomePageData } from './types/page-info'
 import { fetchHygraphQuery } from './utils/fetch-hygraph-query'
@@ -70,17 +71,20 @@ const getPageData = async (): Promise<HomePageData> => {
 
   return fetchHygraphQuery(
     query,
-    60 * 60 * 24, // 1 day
+    1
   )
 }
 
 export default async function Home() {
   const { page: pageData, workExperiences, skills } = await getPageData()
 
+  console.log('Skills:', skills)
+
   return (
     <>
       <HeroSection homeInfo={pageData} />
-      <KnownTechs techs={pageData.knownTechs} skills={skills}/>
+      <KnownTechs techs={pageData.knownTechs}/>
+      <Skills skills={skills} />
       <HighlightedProjects projects={pageData.highlightProjects} />
       <WorkExperience experiences={workExperiences} />
     </>
